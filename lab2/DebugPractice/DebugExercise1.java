@@ -2,7 +2,34 @@
  * Exercise for learning how the debug, breakpoint, and step-into
  * feature work.
  */
+
+
 public class DebugExercise1 {
+
+    /**
+     * we have static method and static variable,but we also specify class to be static
+     * in java we can set a class be static if it's nested class.
+     * static can't reference another class
+     */
+
+    public static class Dog{
+        public int size;
+
+        public Dog(int sizeInBounds){
+            size=sizeInBounds;
+        }
+
+        public void noise() {
+            if (size < 10) {
+                System.out.println("yip!!");
+            } else {
+                System.out.println("bark!!");
+            }
+        }
+
+
+    }
+
     public static int divideThenRound(int top, int bottom) {
         int quotient = top / bottom;
         int result = Math.round(quotient);
@@ -10,6 +37,9 @@ public class DebugExercise1 {
     }
 
     public static void main(String[] args) {
+        Dog d=new Dog(10);
+        d.noise();
+
         int t = 10;
         int b = 2;
         int result = divideThenRound(t, b);
@@ -25,4 +55,6 @@ public class DebugExercise1 {
         int result3 = divideThenRound(t3, b3);
         System.out.println("round(" + t3 + "/" + b3 + ")=" + result3);
     }
+
+
 }

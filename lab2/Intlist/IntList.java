@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.Formatter;
 
 /**
@@ -21,6 +23,7 @@ public class IntList {
      * A List with first FIRST0 and rest REST0.
      */
     public IntList(int first0, IntList rest0) {
+
         first = first0;
         rest = rest0;
     }
@@ -51,6 +54,7 @@ public class IntList {
         if (L == null) {
             return null;
         }
+
         IntList res = new IntList(L.first * L.first, null);
         IntList ptr = res;
         L = L.rest;
@@ -82,7 +86,16 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList P=A;
+        while(P!= null && P.rest !=null){
+            P=P.rest;
+        }
+        if (P== null){
+            return B;
+        }else{
+            P.rest=B;
+            return A;
+        }
     }
 
     /**
@@ -91,21 +104,38 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+
+        if (A ==null){
+            if (B  == null){
+                return null;
+            }
+            IntList mergeList=new IntList(B.first,null);
+            IntList curr=mergeList;
+            while (B.rest!=null){
+                curr.rest=new IntList(B.rest.first,null);
+                curr=curr.rest;
+                B=B.rest;
+            }
+            return mergeList;
+        }
+
+        IntList mergeList=new IntList(A.first,null);
+        IntList curr=mergeList;
+        while (A.rest!=null){
+            curr.rest=new IntList(A.rest.first,null);
+            curr=curr.rest;
+            A=A.rest;
+        }
+        if (B  != null){
+            while (B!=null){
+                curr.rest=new IntList(B.first,null);
+                curr=curr.rest;
+                B=B.rest;
+            }
+        }
+
+        return mergeList;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
